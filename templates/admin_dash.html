@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between mb-4">
+            <h2>Admin Command Center</h2>
+            <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+
+        <h4>Manage Doctors</h4>
+        <table class="table table-dark table-striped mb-5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doc in doctors %}
+                <tr>
+                    <td>{{doc[0]}}</td>
+                    <td>{{doc[1]}}</td>
+                    <td>{{doc[2]}}</td>
+                    <td>${{doc[4]}}</td>
+                    <td>
+                        <a href="/admin/delete/doctor/{{doc[0]}}" class="btn btn-danger btn-sm" onclick="return confirm('Delete this doctor?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <h4>Manage Patients</h4>
+            </div>
+            <div class="col-md-6">
+                <form action="/admin_dashboard" method="GET" class="d-flex">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Search by name or ID...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <a href="/admin_dashboard" class="btn btn-outline-secondary ms-2">Reset</a>
+                </form>
+            </div>
+        </div>
+        
+        <table class="table table-dark table-striped mb-5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Blood Group</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pat in patients %}
+                <tr>
+                    <td>{{pat[0]}}</td>
+                    <td>{{pat[1]}}</td>
+                    <td>{{pat[2]}}</td>
+                    <td>{{pat[3]}}</td>
+                    <td>
+                        <a href="/admin/delete/patient/{{pat[0]}}" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Delete this patient?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr class="my-5">
+
+        <h4>All Hospital Appointments</h4>
+        <table class="table table-dark table-striped mb-5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date & Time</th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appt in appointments %}
+                <tr>
+                    <td>{{appt[0]}}</td>
+                    <td>{{appt[1]}}</td>
+                    <td>{{appt[2]}}</td>
+                    <td>{{appt[3]}}</td>
+                    <td>
+                        <a href="/cancel/{{appt[0]}}" class="btn btn-warning btn-sm">Cancel</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if not appointments %}
+        <p class="text-muted">No appointments found in the system.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

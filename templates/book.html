@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+
+    <h3>Schedule Appointment</h3>
+    
+    <form method="GET" action="/book" class="mb-4">
+        <label>1. Pick Doctor & Date to see availability:</label>
+        <div class="row">
+            <div class="col">
+                <select name="doctor_id" class="form-control" onchange="this.form.submit()">
+                    <option value="">Choose Doctor</option>
+                    {% for d in doctors %}
+                    <option value="{{d[0]}}" {% if selected_doc|string == d[0]|string %}selected{% endif %}>{{d[1]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+                <input type="date" name="date" class="form-control" value="{{selected_date}}" onchange="this.form.submit()">
+            </div>
+        </div>
+    </form>
+
+    {% if slots %}
+    
+    <form action="/book" method="POST">
+        <input type="hidden" name="doctor_id" value="{{selected_doc}}">
+        <input type="hidden" name="date" value="{{selected_date}}">
+        
+        <label>2. Select Available Time:</label>
+        <select name="time" class="form-control mb-3" required>
+            {% for s in slots %}
+            <option value="{{s}}">{{s}}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-success">Confirm Booking</button>
+    </form>
+    {% elif selected_date %}
+    <div class="alert alert-warning">No slots available for this selection</div>
+    {% endif %}
+</div>
+</body>
+</html>
