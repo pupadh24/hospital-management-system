@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS hms;
+CREATE DATABASE IF NOT EXISTS hospital_db;
 
-USE hms;
+USE hospital_db;
 
 DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS doctors;

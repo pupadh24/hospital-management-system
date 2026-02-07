@@ -8,6 +8,7 @@ load_dotenv()
 
 db_config = {
     'host': os.getenv('DB_HOST'),
+    'port': int(os.getenv('DB_PORT')),
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASSWORD'),
     'database': os.getenv('DB_NAME')
@@ -259,5 +260,6 @@ def logout():
     session.clear()
     return redirect('/login')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host='0.0.0.0', port=port)
