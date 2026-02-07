@@ -1,4 +1,6 @@
 # **Hospital Management System**
+[Live Demo](https://hospital-management-system-0r2y.onrender.com)
+
 Initial Build: 2023 | Currently updating for cloud hosting and new features.
 
 This is a Flask web app I've built to help manage how a hospital handles patients and doctors. It uses a MySQL database to keep track of everything and has three different login types so users only see what they are supposed to.
@@ -41,8 +43,6 @@ python app.py
 ```
 
 ## **What I'm working on next**
-1. Getting a live link running on Railway.
+1. Building out the Pharmacy section so doctors can manage medicine stock (and users can buy it too)
 
-2. Building out the Pharmacy section so doctors can manage medicine stock (and users can buy it too)
-
-3. Cleaning up the UI to make it look a little better.
+2. Cleaning up the UI to make it look a little better.
