@@ -8,11 +8,15 @@ load_dotenv()
 
 db_config = {
     'host': os.getenv('DB_HOST'),
-    'port': int(os.getenv('DB_PORT')),
+    'port': int(os.getenv('DB_PORT', 4000)),
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASSWORD'),
     'database': os.getenv('DB_NAME')
 }
+
+if os.getenv('DB_SSL_CA'):
+    db_config['ssl_ca'] = os.getenv('DB_SSL_CA')
+    db_config['ssl_verify_cert'] = True
 
 app.secret_key = os.getenv('SECRET_KEY')
 

@@ -1,9 +1,9 @@
 # **Hospital Management System**
-[Live Demo](https://hospital-management-system-0r2y.onrender.com)
+[Live Demo](https://hospital-management-system-0r2y.onrender.com) *_(Note: Since I'm using a free hosting and DB service, it might take some time to load)_*
 
 Initial Build: 2023 | Currently updating for cloud hosting and new features.
 
-This is a Flask web app I've built to help manage how a hospital handles patients and doctors. It uses a MySQL database to keep track of everything and has three different login types so users only see what they are supposed to.
+This is a Flask web app I've built to help manage how a hospital handles patients and doctors. It uses a TiDB database to keep track of everything and has three different login types so users only see what they are supposed to.
 
 ## **What it does**
 **For Patients:** You can sign up, log in, and see which doctors are available. I wrote the logic to make sure you can't book a time slot that is already taken. You can also view or cancel your appointments from your dashboard.
@@ -17,7 +17,7 @@ This is a Flask web app I've built to help manage how a hospital handles patient
 
 **Framework:** Flask
 
-**Database:** MySQL
+**Database:** TiDB
 
 ## **How to run it locally**
 **1. Clone the repo**
